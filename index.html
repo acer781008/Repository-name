@@ -1,4 +1,64 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>歡樂多人遊戲大廳</title>
-<style>*{box-sizing:border-box}html,body{margin:0;padding:0;background:#69c8ff;font-family:"Microsoft JhengHei",sans-serif}.page{width:100%;display:flex;justify-content:center}.stage{position:relative;width:min(100%,1536px);line-height:0;overflow:hidden}.stage img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}.hotspot{position:absolute;display:block;border-radius:999px;cursor:pointer;text-decoration:none;background:rgba(255,255,255,0);transition:background .15s ease,box-shadow .15s ease,transform .15s ease}.hotspot:focus-visible{outline:4px solid white;outline-offset:3px;box-shadow:0 0 0 7px rgba(55,79,190,.55)}@media(hover:hover){.hotspot:hover{background:rgba(255,255,255,.12);box-shadow:0 0 0 4px rgba(255,255,255,.45);transform:translateY(-2px)}}.bingo-link{left:16.0%;top:81.3%;width:18.5%;height:8.8%}.dice-link{left:40.6%;top:81.3%;width:18.5%;height:8.8%}.sudoku-link{left:65.3%;top:81.3%;width:18.5%;height:8.8%}@media(max-width:560px){.hotspot{min-height:42px}}</style></head>
-<body><main class="page"><div class="stage" aria-label="歡樂多人遊戲大廳"><img src="assets/遊戲大廳.png" alt="歡樂多人遊戲大廳，包含賓果賓果、骰子猜猜王與多人數獨競速王三款遊戲"><a class="hotspot bingo-link" href="https://bingo-game1.onrender.com/" aria-label="進入賓果賓果"></a><a class="hotspot dice-link" href="https://dice-guess-king.onrender.com/" aria-label="進入骰子猜猜王"></a><a class="hotspot sudoku-link" href="https://multiplayer-sudoku-race.onrender.com/admin-login.html" aria-label="進入多人數獨競速王"></a></div></main></body></html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>歡樂多人遊戲大廳</title>
+<style>
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  min-height:100%;
+}
+body{
+  background:
+    linear-gradient(rgba(255,255,255,.06),rgba(255,255,255,.06)),
+    url("assets/遊戲大廳.png") center top / cover fixed no-repeat;
+}
+.stage{
+  position:relative;
+  width:min(100vw,1408px);
+  margin:0 auto;
+  line-height:0;
+}
+.stage img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.hot{
+  position:absolute;
+  display:block;
+  width:22.7%;
+  height:31.5%;
+  cursor:pointer;
+  border-radius:9%;
+}
+.hot:hover{outline:none;box-shadow:none}
+
+/* 兩排全部同寬、同高；只有位置不同 */
+.c1{left:14.7%;top:23.4%}
+.c2{left:38.6%;top:23.4%}
+.c3{left:62.4%;top:23.4%}
+.c4{left:14.7%;top:60.4%}
+.c5{left:38.6%;top:60.4%}
+.c6{left:62.4%;top:60.4%;cursor:default}
+
+@media (min-aspect-ratio: 4/3){
+  body{background-size:cover}
+}
+.hot:focus,.hot:active{outline:none;box-shadow:none}
+</style>
+</head>
+<body>
+<div class="stage">
+  <img src="assets/遊戲大廳.png" alt="歡樂多人遊戲大廳">
+  <a class="hot c1" href="https://bingo-game1.onrender.com/" aria-label="賓果賓果"></a>
+  <a class="hot c2" href="https://dice-guess-king.onrender.com/" aria-label="數字大亂鬥"></a>
+  <a class="hot c3" href="https://multiplayer-sudoku-race.onrender.com/" aria-label="數獨競速王"></a>
+  <a class="hot c4" href="https://card-hall.onrender.com/" aria-label="多人棋牌館"></a>
+  <a class="hot c5" href="https://extreme-quiz-king.onrender.com/" aria-label="極速答題王"></a>
+  <span class="hot c6" aria-label="更多遊戲"></span>
+</div>
+</body>
+</html>
