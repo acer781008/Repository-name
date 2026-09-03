@@ -6,140 +6,41 @@
 <title>歡樂多人遊戲大廳</title>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:"Microsoft JhengHei",Arial,sans-serif}
-body{
-  background:linear-gradient(#2fb9ef 0%,#6dd8f4 52%,#ffe89a 100%);
-  overflow-x:hidden;
-}
-a{-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;min-height:100%;background:#63cdf4}
+body{font-family:"Microsoft JhengHei",Arial,sans-serif}
+.stage{width:100%;display:flex;justify-content:center;align-items:flex-start;overflow:hidden}
+.board{position:relative;width:min(100vw,1402px);aspect-ratio:1402/1122;background:#63cdf4}
+.board>img{display:block;width:100%;height:100%;object-fit:contain}
+.hot{position:absolute;display:block;outline:0;border:0;-webkit-tap-highlight-color:transparent;background:transparent}
+.hot:focus,.hot:hover,.hot:active{outline:0;box-shadow:none}
+.disabled{pointer-events:none}
 
-/* ===== 電腦 / 平板橫向：保留原本大廳 ===== */
-.desktop-lobby{
-  min-height:100vh;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-}
-.stage{
-  position:relative;
-  width:min(100vw, calc(100vh * 1.333333));
-  line-height:0;
-}
-.stage>img{
-  display:block;
-  width:100%;
-  height:auto;
-}
-.hot{
-  position:absolute;
-  display:block;
-  width:22.7%;
-  height:31.5%;
-  outline:none;
-  border:0;
-  box-shadow:none;
-}
-.hot:hover,.hot:active,.hot:focus{outline:none;box-shadow:none}
-.c1{left:14.7%;top:23.4%}
-.c2{left:38.6%;top:23.4%}
-.c3{left:62.4%;top:23.4%}
-.c4{left:14.7%;top:60.4%}
-.c5{left:38.6%;top:60.4%}
-.c6{left:62.4%;top:60.4%;pointer-events:none}
+/* 依新圖六張卡片重新對準 */
+.h1{left:10.8%;top:26.6%;width:24.0%;height:32.5%}
+.h2{left:36.3%;top:26.6%;width:24.0%;height:32.5%}
+.h3{left:62.0%;top:26.6%;width:24.0%;height:32.5%}
+.h4{left:10.8%;top:61.2%;width:24.0%;height:31.5%}
+.h5{left:36.3%;top:61.2%;width:24.0%;height:31.5%}
+.h6{left:62.0%;top:61.2%;width:24.0%;height:31.5%}
 
-/* ===== 手機直向：真正的 2欄×3排 ===== */
-.mobile-lobby{display:none}
-@media (max-width:700px) and (orientation:portrait){
-  body{
-    background:linear-gradient(#2eb8ee 0%,#7adcf5 42%,#fff0ad 100%);
-  }
-  .desktop-lobby{display:none}
-  .mobile-lobby{
-    display:block;
-    min-height:100vh;
-    padding:18px 12px 26px;
-  }
-  .mobile-title{
-    text-align:center;
-    color:#fff;
-    text-shadow:0 3px 0 #237fbd,0 5px 10px rgba(0,0,0,.18);
-    font-weight:1000;
-    font-size:clamp(27px,8.5vw,42px);
-    letter-spacing:1px;
-    margin:3px 0 5px;
-  }
-  .mobile-sub{
-    width:max-content;
-    max-width:94%;
-    margin:0 auto 15px;
-    padding:7px 15px;
-    border-radius:999px;
-    background:#ff5b8e;
-    color:#fff;
-    font-weight:900;
-    font-size:14px;
-    box-shadow:0 4px 0 rgba(176,48,96,.25);
-  }
-  .mobile-grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:11px;
-    max-width:620px;
-    margin:0 auto;
-  }
-  .mobile-card{
-    display:block;
-    overflow:hidden;
-    border-radius:16px;
-    background:#fff;
-    box-shadow:0 6px 14px rgba(0,73,123,.20);
-    text-decoration:none;
-    outline:none;
-  }
-  .mobile-card img{
-    display:block;
-    width:100%;
-    aspect-ratio:0.72;
-    object-fit:cover;
-  }
-  .mobile-card.disabled{pointer-events:none}
-  .mobile-footer{
-    text-align:center;
-    color:#1678a8;
-    font-size:12px;
-    font-weight:800;
-    margin-top:14px;
-  }
+@media (max-width:700px){
+  html,body{background:#63cdf4}
+  .stage{overflow-x:hidden}
+  .board{width:100vw;min-width:100vw}
 }
 </style>
 </head>
 <body>
-
-<section class="desktop-lobby">
-  <div class="stage">
+<main class="stage">
+  <div class="board">
     <img src="assets/遊戲大廳.png" alt="歡樂多人遊戲大廳">
-    <a class="hot c1" href="https://bingo-game1.onrender.com/" aria-label="賓果賓果"></a>
-    <a class="hot c2" href="https://dice-guess-king.onrender.com/" aria-label="數字大亂鬥"></a>
-    <a class="hot c3" href="https://multiplayer-sudoku-race.onrender.com/" aria-label="數獨競速王"></a>
-    <a class="hot c4" href="https://card-hall.onrender.com/" aria-label="多人棋牌館"></a>
-    <a class="hot c5" href="https://extreme-quiz-king.onrender.com/" aria-label="極速答題王"></a>
-    <span class="hot c6" aria-hidden="true"></span>
+    <a class="hot h1" href="https://bingo-game1.onrender.com/" aria-label="賓果賓果"></a>
+    <a class="hot h2" href="https://dice-guess-king.onrender.com/" aria-label="數字大亂鬥"></a>
+    <a class="hot h3" href="https://multiplayer-sudoku-race.onrender.com/" aria-label="數獨競速王"></a>
+    <a class="hot h4" href="https://card-hall.onrender.com/" aria-label="多人棋牌館"></a>
+    <a class="hot h5" href="https://extreme-quiz-king.onrender.com/" aria-label="極速答題王"></a>
+    <span class="hot h6 disabled" aria-label="更多遊戲，敬請期待"></span>
   </div>
-</section>
-
-<section class="mobile-lobby">
-  <div class="mobile-title">歡樂多人遊戲大廳</div>
-  <div class="mobile-sub">選擇一款遊戲開始挑戰吧！</div>
-  <div class="mobile-grid">
-    <a class="mobile-card" href="https://bingo-game1.onrender.com/"><img src="assets/cards/01-bingo.jpg" alt="賓果賓果"></a>
-    <a class="mobile-card" href="https://dice-guess-king.onrender.com/"><img src="assets/cards/02-number.jpg" alt="數字大亂鬥"></a>
-    <a class="mobile-card" href="https://multiplayer-sudoku-race.onrender.com/"><img src="assets/cards/03-sudoku.jpg" alt="數獨競速王"></a>
-    <a class="mobile-card" href="https://card-hall.onrender.com/"><img src="assets/cards/04-cardhall.jpg" alt="多人棋牌館"></a>
-    <a class="mobile-card" href="https://extreme-quiz-king.onrender.com/"><img src="assets/cards/05-quiz.jpg" alt="極速答題王"></a>
-    <div class="mobile-card disabled"><img src="assets/cards/06-more.jpg" alt="更多遊戲 敬請期待"></div>
-  </div>
-  <div class="mobile-footer">更多遊戲持續加入中</div>
-</section>
-
+</main>
 </body>
 </html>
