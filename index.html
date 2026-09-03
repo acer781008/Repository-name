@@ -8,22 +8,26 @@
 *{box-sizing:border-box}
 html,body{
   margin:0;
+  width:100%;
   min-height:100%;
 }
 body{
-  background:#ffffff;
+  overflow-x:hidden;
+  background:#22aeea;
 }
 .stage{
   position:relative;
-  width:min(100vw,1408px);
-  margin:0 auto;
+  width:100vw;
   line-height:0;
+  overflow:hidden;
 }
 .stage img{
   display:block;
-  width:100%;
+  width:100vw;
   height:auto;
 }
+
+/* 六張卡片點擊區：維持原本比例位置 */
 .hot{
   position:absolute;
   display:block;
@@ -31,10 +35,10 @@ body{
   height:31.5%;
   cursor:pointer;
   border-radius:9%;
+  outline:none;
+  -webkit-tap-highlight-color:transparent;
 }
-.hot:hover{outline:none;box-shadow:none}
-
-/* 兩排全部同寬、同高；只有位置不同 */
+.hot:hover,.hot:focus,.hot:active{outline:none;box-shadow:none}
 .c1{left:14.7%;top:23.4%}
 .c2{left:38.6%;top:23.4%}
 .c3{left:62.4%;top:23.4%}
@@ -42,7 +46,18 @@ body{
 .c5{left:38.6%;top:60.4%}
 .c6{left:62.4%;top:60.4%;cursor:default}
 
-.hot:focus,.hot:active{outline:none;box-shadow:none}
+/* 手機直向：圖片本身拉到至少一個螢幕高，消除下方大片空白。
+   不使用第二張背景圖，所以不會重複城堡/熊貓/卡片。 */
+@media (max-aspect-ratio: 3/4){
+  .stage{
+    min-height:100vh;
+  }
+  .stage img{
+    width:100vw;
+    min-height:100vh;
+    object-fit:fill;
+  }
+}
 </style>
 </head>
 <body>
