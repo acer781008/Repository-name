@@ -11,34 +11,44 @@ html,body{
   width:100%;
   min-height:100%;
 }
+html{
+  background:#39b9ee;
+}
 body{
+  min-height:100vh;
   overflow-x:hidden;
-  background:#22aeea;
+  /* 只用顏色延伸空間，不再放第二張圖片 */
+  background:linear-gradient(to bottom,#39b9ee 0%,#b9edff 42%,#ffe6a8 72%,#f7c96f 100%);
 }
 .stage{
   position:relative;
-  width:100vw;
+  width:100%;
+  margin:0 auto;
   line-height:0;
-  overflow:hidden;
 }
-.stage img{
+.stage>img{
   display:block;
-  width:100vw;
+  width:100%;
   height:auto;
 }
 
-/* 六張卡片點擊區：維持原本比例位置 */
+/* 六張卡片點擊區 */
 .hot{
   position:absolute;
   display:block;
   width:22.7%;
   height:31.5%;
   cursor:pointer;
-  border-radius:9%;
+  border:0;
   outline:none;
+  box-shadow:none;
+  border-radius:9%;
   -webkit-tap-highlight-color:transparent;
 }
-.hot:hover,.hot:focus,.hot:active{outline:none;box-shadow:none}
+.hot:hover,.hot:active,.hot:focus{
+  outline:none;
+  box-shadow:none;
+}
 .c1{left:14.7%;top:23.4%}
 .c2{left:38.6%;top:23.4%}
 .c3{left:62.4%;top:23.4%}
@@ -46,17 +56,18 @@ body{
 .c5{left:38.6%;top:60.4%}
 .c6{left:62.4%;top:60.4%;cursor:default}
 
-/* 手機直向：圖片本身拉到至少一個螢幕高，消除下方大片空白。
-   不使用第二張背景圖，所以不會重複城堡/熊貓/卡片。 */
-@media (max-aspect-ratio: 3/4){
+/* 電腦寬螢幕：圖片永遠完整依比例，不拉伸、不重複。
+   左右若因螢幕比例產生空間，只顯示同色系背景。 */
+@media (min-width:900px){
   .stage{
-    min-height:100vh;
+    width:min(100vw, calc(100vh * 4 / 3));
   }
-  .stage img{
-    width:100vw;
-    min-height:100vh;
-    object-fit:fill;
-  }
+}
+
+/* 手機：以手機寬度完整顯示主圖，絕不硬拉高。
+   圖片下方剩餘螢幕由同色系背景自然延伸。 */
+@media (max-width:899px){
+  .stage{width:100vw}
 }
 </style>
 </head>
